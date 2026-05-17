@@ -1,0 +1,11 @@
+{
+  "name": "test-skill",
+  "namespace": "community",
+  "description": "Test skill submission for CI validation",
+  "repo": "kylecui/petfish.ai",
+  "ref": "v0.13.4",
+  "path": "packs/petfish-companion-skill/.opencode/skills/skill-lint",
+  "license": "Apache-2.0",
+  "author": "kylecui",
+  "tags": ["test", "ci-validation"]
+}
