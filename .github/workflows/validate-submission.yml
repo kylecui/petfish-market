@@ -169,21 +169,9 @@ jobs:
             fi
 
             # Write gate result back into skill JSON for merge
-            python3 -c "
-import json, sys
-from datetime import datetime, timezone
-with open('$SKILL_FILE') as f:
-    d = json.load(f)
-d['gate_result'] = {
-    'decision': '$DECISION',
-    'lint_score': int('$LINT_SCORE') if '$LINT_SCORE' not in ['-1',''] else -1,
-    'security_risk': float('$SECURITY_RISK') if '$SECURITY_RISK' not in ['-1',''] else -1,
-    'validated_at': datetime.now(timezone.utc).isoformat(),
-    'gate_version': '${{ steps.petfish-tag.outputs.tag }}'
-}
-with open('$SKILL_FILE', 'w') as f:
-    json.dump(d, f, indent=2)
-"
+            export SKILL_FILE DECISION LINT_SCORE SECURITY_RISK
+            export GATE_VERSION="${{ steps.petfish-tag.outputs.tag }}"
+            python3 -c 'import json,os;from datetime import datetime,timezone;f=os.environ["SKILL_FILE"];d=json.load(open(f));ls=os.environ["LINT_SCORE"];sr=os.environ["SECURITY_RISK"];d["gate_result"]={"decision":os.environ["DECISION"],"lint_score":int(ls) if ls not in ["-1",""] else -1,"security_risk":float(sr) if sr not in ["-1",""] else -1,"validated_at":datetime.now(timezone.utc).isoformat(),"gate_version":os.environ["GATE_VERSION"]};json.dump(d,open(f,"w"),indent=2)'
 
           done <<< "${{ steps.changed.outputs.files }}"
 
