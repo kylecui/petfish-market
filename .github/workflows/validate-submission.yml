@@ -5,6 +5,12 @@ on:
     types: [opened, synchronize, reopened]
     paths:
       - 'skills/*.json'
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to validate manually'
+        required: true
+        type: string
 
 permissions:
   contents: read
