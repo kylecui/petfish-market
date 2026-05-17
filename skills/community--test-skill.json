@@ -7,5 +7,6 @@
   "path": "packs/petfish-companion-skill/.opencode/skills/skill-lint",
   "license": "Apache-2.0",
   "author": "kylecui",
-  "tags": ["test", "ci-validation"]
+  "tags": ["test", "ci-validation"],
+  "submitted_at": "2026-05-17"
 }
