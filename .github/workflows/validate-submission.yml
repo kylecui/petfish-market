@@ -1,0 +1,211 @@
+name: validate-submission
+
+on:
+  pull_request:
+    paths:
+      - 'skills/*.json'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout market repo
+        uses: actions/checkout@v4
+
+      - name: Detect changed skill files
+        id: changed
+        run: |
+          FILES=$(gh pr diff ${{ github.event.pull_request.number }} --name-only | grep '^skills/.*\.json$' || true)
+          if [ -z "$FILES" ]; then
+            echo "No skill JSON files changed"
+            echo "files=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Store as newline-separated list
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$FILES" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Exit early if no skill files
+        if: steps.changed.outputs.files == ''
+        run: echo "No skill files to validate" && exit 0
+
+      - name: Install uv
+        if: steps.changed.outputs.files != ''
+        uses: astral-sh/setup-uv@v4
+
+      - name: Set up Python
+        if: steps.changed.outputs.files != ''
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Get latest petfish.ai release tag
+        if: steps.changed.outputs.files != ''
+        id: petfish-tag
+        run: |
+          TAG=$(gh api repos/kylecui/petfish.ai/releases/latest --jq '.tag_name')
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Using petfish.ai release: $TAG"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout petfish.ai gate tooling
+        if: steps.changed.outputs.files != ''
+        uses: actions/checkout@v4
+        with:
+          repository: kylecui/petfish.ai
+          ref: ${{ steps.petfish-tag.outputs.tag }}
+          path: petfish-ai
+
+      - name: Validate and gate each skill
+        if: steps.changed.outputs.files != ''
+        id: gate
+        run: |
+          GATE_SCRIPT="petfish-ai/packs/petfish-companion-skill/.opencode/skills/quality-gate/scripts/run_gate.py"
+          RESULTS_FILE="gate-results.md"
+          OVERALL="pass"
+
+          echo "## 🐟 PEtFiSh Quality Gate Results" > "$RESULTS_FILE"
+          echo "" >> "$RESULTS_FILE"
+
+          while IFS= read -r SKILL_FILE; do
+            [ -z "$SKILL_FILE" ] && continue
+            echo "--- Validating: $SKILL_FILE ---"
+            SKILL_NAME=$(basename "$SKILL_FILE" .json)
+
+            echo "### \`$SKILL_NAME\`" >> "$RESULTS_FILE"
+            echo "" >> "$RESULTS_FILE"
+
+            # 1. Schema validation — required fields
+            MISSING=""
+            for FIELD in name namespace repo ref path license; do
+              VAL=$(python3 -c "import json,sys; d=json.load(open('$SKILL_FILE')); print(d.get('$FIELD',''))")
+              if [ -z "$VAL" ]; then
+                MISSING="$MISSING $FIELD"
+              fi
+            done
+
+            if [ -n "$MISSING" ]; then
+              echo "❌ **Schema validation failed** — missing required fields:$MISSING" >> "$RESULTS_FILE"
+              echo "" >> "$RESULTS_FILE"
+              OVERALL="fail"
+              continue
+            fi
+
+            # Extract metadata
+            REPO=$(python3 -c "import json; d=json.load(open('$SKILL_FILE')); print(d['repo'])")
+            REF=$(python3 -c "import json; d=json.load(open('$SKILL_FILE')); print(d['ref'])")
+            SKILL_PATH=$(python3 -c "import json; d=json.load(open('$SKILL_FILE')); print(d['path'])")
+            LICENSE_VAL=$(python3 -c "import json; d=json.load(open('$SKILL_FILE')); print(d['license'])")
+
+            echo "✅ Schema validation passed" >> "$RESULTS_FILE"
+
+            # 2. License check
+            ALLOWED_LICENSES="Apache-2.0 MIT BSD-2-Clause BSD-3-Clause ISC"
+            LICENSE_OK=false
+            for L in $ALLOWED_LICENSES; do
+              if [ "$LICENSE_VAL" = "$L" ]; then
+                LICENSE_OK=true
+                break
+              fi
+            done
+            if [ "$LICENSE_OK" = false ]; then
+              echo "❌ **License not allowed**: \`$LICENSE_VAL\` (allowed: $ALLOWED_LICENSES)" >> "$RESULTS_FILE"
+              echo "" >> "$RESULTS_FILE"
+              OVERALL="fail"
+              continue
+            fi
+            echo "✅ License: \`$LICENSE_VAL\`" >> "$RESULTS_FILE"
+
+            # 3. Clone author's repo and verify skill path
+            CLONE_DIR="cloned-skills/$SKILL_NAME"
+            if ! git clone --depth 1 --branch "$REF" "https://github.com/$REPO.git" "$CLONE_DIR" 2>/dev/null; then
+              echo "❌ **Repo clone failed**: \`$REPO\` at ref \`$REF\`" >> "$RESULTS_FILE"
+              echo "" >> "$RESULTS_FILE"
+              OVERALL="fail"
+              continue
+            fi
+
+            FULL_SKILL_PATH="$CLONE_DIR/$SKILL_PATH"
+            if [ ! -f "$FULL_SKILL_PATH/SKILL.md" ]; then
+              echo "❌ **SKILL.md not found** at \`$SKILL_PATH\` in \`$REPO@$REF\`" >> "$RESULTS_FILE"
+              echo "" >> "$RESULTS_FILE"
+              OVERALL="fail"
+              continue
+            fi
+            echo "✅ Repo cloned and SKILL.md found" >> "$RESULTS_FILE"
+
+            # 4. Run quality gate
+            GATE_OUTPUT=$(uv run python "$GATE_SCRIPT" --path "$FULL_SKILL_PATH" --json 2>&1) || true
+
+            # Parse gate JSON result
+            DECISION=$(echo "$GATE_OUTPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('decision','UNKNOWN'))" 2>/dev/null || echo "UNKNOWN")
+            LINT_SCORE=$(echo "$GATE_OUTPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('lint',{}).get('score',-1))" 2>/dev/null || echo "-1")
+            SECURITY_RISK=$(echo "$GATE_OUTPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('security',{}).get('risk_score',-1))" 2>/dev/null || echo "-1")
+
+            echo "- **Gate decision**: \`$DECISION\`" >> "$RESULTS_FILE"
+            echo "- **Lint score**: $LINT_SCORE / 100" >> "$RESULTS_FILE"
+            echo "- **Security risk**: $SECURITY_RISK" >> "$RESULTS_FILE"
+            echo "" >> "$RESULTS_FILE"
+
+            if [ "$DECISION" = "FAIL" ]; then
+              OVERALL="fail"
+            elif [ "$DECISION" = "CONDITIONAL" ] && [ "$OVERALL" != "fail" ]; then
+              OVERALL="conditional"
+            fi
+
+            # Write gate result back into skill JSON for merge
+            python3 -c "
+import json, sys
+from datetime import datetime, timezone
+with open('$SKILL_FILE') as f:
+    d = json.load(f)
+d['gate_result'] = {
+    'decision': '$DECISION',
+    'lint_score': int('$LINT_SCORE') if '$LINT_SCORE' not in ['-1',''] else -1,
+    'security_risk': float('$SECURITY_RISK') if '$SECURITY_RISK' not in ['-1',''] else -1,
+    'validated_at': datetime.now(timezone.utc).isoformat(),
+    'gate_version': '${{ steps.petfish-tag.outputs.tag }}'
+}
+with open('$SKILL_FILE', 'w') as f:
+    json.dump(d, f, indent=2)
+"
+
+          done <<< "${{ steps.changed.outputs.files }}"
+
+          echo "" >> "$RESULTS_FILE"
+          echo "---" >> "$RESULTS_FILE"
+          echo "**Overall: \`$OVERALL\`** | Gate tooling: \`${{ steps.petfish-tag.outputs.tag }}\`" >> "$RESULTS_FILE"
+
+          echo "overall=$OVERALL" >> "$GITHUB_OUTPUT"
+
+      - name: Post PR comment
+        if: steps.changed.outputs.files != '' && always()
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --body-file gate-results.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Apply label
+        if: steps.changed.outputs.files != '' && always()
+        run: |
+          OVERALL="${{ steps.gate.outputs.overall }}"
+          # Remove existing gate labels
+          for LABEL in gate:pass gate:conditional gate:fail; do
+            gh pr edit ${{ github.event.pull_request.number }} --remove-label "$LABEL" 2>/dev/null || true
+          done
+          # Apply new label
+          gh pr edit ${{ github.event.pull_request.number }} --add-label "gate:$OVERALL"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fail if gate failed
+        if: steps.gate.outputs.overall == 'fail'
+        run: exit 1
