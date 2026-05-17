@@ -1,5 +1,21 @@
 {
   "version": 1,
-  "generated_at": "2026-05-17T00:00:00Z",
-  "skills": []
+  "generated_at": "2026-05-17T04:23:21.429174+00:00",
+  "skill_count": 1,
+  "skills": [
+    {
+      "name": "test-skill",
+      "namespace": "community",
+      "description": "A test skill to validate the CI pipeline",
+      "repo": "kylecui/petfish.ai",
+      "ref": "v0.13.4",
+      "path": "packs/petfish-companion-skill/.opencode/skills/skill-lint",
+      "license": "Apache-2.0",
+      "author": "petfish",
+      "tags": [
+        "test",
+        "ci-validation"
+      ]
+    }
+  ]
 }
