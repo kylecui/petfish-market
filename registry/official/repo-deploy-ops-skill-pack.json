@@ -1,0 +1,21 @@
+{
+  "namespace": "official",
+  "name": "repo-deploy-ops-skill-pack",
+  "alias": [
+    "deploy"
+  ],
+  "description": "部署与运维 — 运行时识别、主机检查、部署执行、验证、运维、回滚、全生命周期管理",
+  "version": "1.0.1",
+  "repo": "kylecui/petfish.ai",
+  "ref": "v1.4.0",
+  "path": "packs/optional/repo-deploy-ops-skill-pack",
+  "skill_count": 7,
+  "command_count": 0,
+  "agent_count": 0,
+  "license": "Apache-2.0",
+  "author": "petfish-team",
+  "platforms": [
+    "opencode"
+  ],
+  "gate_result": {}
+}

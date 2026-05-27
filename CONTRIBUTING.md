@@ -99,6 +99,81 @@ To update an existing skill:
 2. Update the `version` and `ref` fields in your `skills/community--<name>.json`
 3. Open a PR — CI re-validates against the new version
 
+## Submitting a Pack (Official or Community)
+
+PEtFiSh Market supports a **dual submission model**:
+
+- **`skills/`** — single-skill entries (one JSON per skill, existing model)
+- **`registry/`** — pack-level entries (one JSON per pack, containing multiple skills)
+
+### Pack Model Overview
+
+| Type | Directory | Namespace | Who maintains |
+|------|-----------|-----------|---------------|
+| Official pack | `registry/official/<pack-name>.json` | `official` | petfish team |
+| Community pack | `registry/community/<pack-name>.json` | `community` | PR contributors |
+
+### Submitting a Community Pack
+
+1. **Prepare your pack** in your own GitHub repository, tagged at a stable release
+2. **Fork this repo** and add a file at `registry/community/<pack-name>.json`
+3. **Use the pack registry JSON schema:**
+
+```json
+{
+  "namespace": "community",
+  "name": "your-pack-name",
+  "alias": ["short-alias"],
+  "description": "Brief description of what the pack contains (bilingual preferred)",
+  "repo": "your-github-username/your-repo",
+  "ref": "vX.Y.Z",
+  "path": "path/to/pack/within/repo",
+  "skill_count": 3,
+  "license": "Apache-2.0",
+  "author": "your-github-username",
+  "platforms": ["opencode"],
+  "gate_result": {}
+}
+```
+
+**Field reference:**
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `namespace` | Yes | `official` or `community` |
+| `name` | Yes | Pack directory name, kebab-case |
+| `alias` | Yes | Short install aliases (array) |
+| `description` | Yes | One-line description (bilingual preferred) |
+| `repo` | Yes | `owner/repo` format |
+| `ref` | Yes | Git tag or commit SHA |
+| `path` | Yes | Path to pack directory within the repo |
+| `skill_count` | Yes | Number of skills in the pack |
+| `license` | Yes | SPDX identifier (Apache-2.0, MIT, etc.) |
+| `author` | Yes | GitHub username of pack author |
+| `platforms` | Yes | Array of: `opencode`, `claude`, `codex`, `cursor`, `copilot`, `windsurf`, `antigravity`, `universal` |
+| `gate_result` | Auto | **Leave as `{}`** — CI auto-populates this field |
+
+4. **File naming rule:** `registry/<namespace>/<pack-name>.json`
+   - Example: `registry/community/my-data-tools.json`
+
+5. **Open a PR** — CI will automatically:
+   1. Validate your JSON schema
+   2. Clone your pack repo at the specified `ref`
+   3. Verify the path exists in the cloned repo
+   4. Run the full quality gate (lint + security audit) on each skill
+   5. Auto-populate `gate_result` on pass
+   6. Post results as a PR comment and apply `gate:pass/conditional/fail` label
+
+> **Note:** `gate_result` is auto-populated by CI — do not fill it manually in your submission.
+
+### Official Packs
+
+Official packs (in `registry/official/`) are maintained by the petfish team and published with namespace `official`. Community contributors cannot directly add to `registry/official/` — open an issue instead to propose an official pack.
+
+### How Packs Appear in index.json
+
+Pack entries from `registry/official/` and `registry/community/` are included as-is in `index.json` under the `packs[]` array, alongside the existing `skills[]` array.
+
 ## Naming Rules
 
 - Skill names must be kebab-case: `my-cool-skill`, not `MyCoolSkill`
