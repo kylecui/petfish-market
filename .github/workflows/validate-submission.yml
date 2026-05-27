@@ -5,6 +5,7 @@ on:
     types: [opened, synchronize, reopened]
     paths:
       - 'skills/*.json'
+      - 'registry/**/*.json'
   workflow_dispatch:
     inputs:
       pr_number:
@@ -75,7 +76,7 @@ jobs:
         if: steps.changed.outputs.files != ''
         id: gate
         run: |
-          GATE_SCRIPT="petfish-ai/packs/petfish-companion-skill/.opencode/skills/quality-gate/scripts/run_gate.py"
+          GATE_SCRIPT="petfish-ai/packs/core/petfish-toolchain-skill/.opencode/skills/quality-gate/scripts/run_gate.py"
           RESULTS_FILE="gate-results.md"
           OVERALL="pass"
 
