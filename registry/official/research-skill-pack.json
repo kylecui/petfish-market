@@ -1,0 +1,21 @@
+{
+  "namespace": "official",
+  "name": "research-skill-pack",
+  "alias": [
+    "research"
+  ],
+  "description": "Research workbench skill pack covering scientific, product, planning, learning, decision, risk-procurement, and experience-event research workflows with traceable evidence chains.",
+  "version": "1.0.0",
+  "repo": "kylecui/petfish.ai",
+  "ref": "v1.4.0",
+  "path": "packs/optional/research-skill-pack",
+  "skill_count": 54,
+  "command_count": 0,
+  "agent_count": 0,
+  "license": "Apache-2.0",
+  "author": "petfish-team",
+  "platforms": [
+    "opencode"
+  ],
+  "gate_result": {}
+}

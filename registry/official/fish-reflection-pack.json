@@ -1,0 +1,21 @@
+{
+  "namespace": "official",
+  "name": "fish-reflection-pack",
+  "alias": [
+    "reflect"
+  ],
+  "description": "结构化反思与经验沉淀 — 在用户纠正、连续失败或显式请求时触发反思，将一次性修正转化为可复用的预防规则和项目知识资产",
+  "version": "0.1.0",
+  "repo": "kylecui/petfish.ai",
+  "ref": "v1.4.0",
+  "path": "packs/optional/fish-reflection-pack",
+  "skill_count": 1,
+  "command_count": 0,
+  "agent_count": 0,
+  "license": "Apache-2.0",
+  "author": "petfish-team",
+  "platforms": [
+    "opencode"
+  ],
+  "gate_result": {}
+}

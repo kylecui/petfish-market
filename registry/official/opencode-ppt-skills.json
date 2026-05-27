@@ -1,0 +1,21 @@
+{
+  "namespace": "official",
+  "name": "opencode-ppt-skills",
+  "alias": [
+    "ppt"
+  ],
+  "description": "PPT设计与制作 — 读取/生成PPTX、Slide QA、视觉渲染",
+  "version": "1.0.1",
+  "repo": "kylecui/petfish.ai",
+  "ref": "v1.4.0",
+  "path": "packs/optional/opencode-ppt-skills",
+  "skill_count": 2,
+  "command_count": 0,
+  "agent_count": 0,
+  "license": "Apache-2.0",
+  "author": "petfish-team",
+  "platforms": [
+    "opencode"
+  ],
+  "gate_result": {}
+}

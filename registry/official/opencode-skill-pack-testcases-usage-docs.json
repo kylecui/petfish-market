@@ -1,0 +1,21 @@
+{
+  "namespace": "official",
+  "name": "opencode-skill-pack-testcases-usage-docs",
+  "alias": [
+    "testdocs"
+  ],
+  "description": "测试用例与使用文档生成 — test case、覆盖率矩阵、README、API docs",
+  "version": "1.0.1",
+  "repo": "kylecui/petfish.ai",
+  "ref": "v1.4.0",
+  "path": "packs/optional/opencode-skill-pack-testcases-usage-docs",
+  "skill_count": 2,
+  "command_count": 0,
+  "agent_count": 0,
+  "license": "Apache-2.0",
+  "author": "petfish-team",
+  "platforms": [
+    "opencode"
+  ],
+  "gate_result": {}
+}

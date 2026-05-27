@@ -1,0 +1,22 @@
+{
+  "namespace": "official",
+  "name": "petfish-style-skill",
+  "alias": [
+    "petfish",
+    "petfish-style-rewriter"
+  ],
+  "description": "工程写作风格改写 — 去AI味、说人话、AI腔检测与改写、中英文紧凑混排",
+  "version": "4.0.1",
+  "repo": "kylecui/petfish.ai",
+  "ref": "v1.4.0",
+  "path": "packs/optional/petfish-style-skill",
+  "skill_count": 1,
+  "command_count": 0,
+  "agent_count": 0,
+  "license": "Apache-2.0",
+  "author": "petfish-team",
+  "platforms": [
+    "opencode"
+  ],
+  "gate_result": {}
+}
