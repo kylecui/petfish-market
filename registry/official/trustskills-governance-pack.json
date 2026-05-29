@@ -8,7 +8,7 @@
   "description": "Skill安全治理引擎 — 基于行为分析的skill可信度评估、风险评分与治理决策",
   "version": "0.1.1",
   "repo": "kylecui/petfish.ai",
-  "ref": "v1.4.0",
+  "ref": "v1.4.1",
   "path": "packs/optional/trustskills-governance-pack",
   "skill_count": 1,
   "command_count": 0,
