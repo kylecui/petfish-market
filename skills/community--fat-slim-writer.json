@@ -1,0 +1,11 @@
+{
+    "name": "fat-slim-writer",
+    "namespace": "community",
+    "description": "胖瘦写作法：先加法堆砌素材形成胖文章，再减法删除无关无效内容 (Fat-Slim writing: add material then subtract fluff)",
+    "repo": "kylecui/petfish-pack-fat-slim-writer",
+    "ref": "v0.1.0",
+    "path": ".opencode/skills/fat-slim-writer",
+    "license": "Apache-2.0",
+    "author": "petfish-community",
+    "tags": ["writing", "book", "long-form", "content"]
+}
