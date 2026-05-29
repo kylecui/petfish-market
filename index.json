@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-05-29T04:40:46.663445+00:00",
+  "generated_at": "2026-05-29T04:43:09.146099+00:00",
   "skill_count": 1,
   "pack_count": 9,
   "skills": [
@@ -137,7 +137,7 @@
       "version": "4.0.1",
       "repo": "kylecui/petfish-pack-petfish-style",
       "ref": "v4.0.1",
-      "path": ".opencode",
+      "path": ".",
       "skill_count": 1,
       "command_count": 0,
       "agent_count": 0,
