@@ -8,7 +8,7 @@
   "description": "反迎合决策校准 — 在评审、方案设计、代码审查等判断型任务中降低AI迎合倾向，通过中性化提问、评分卡、替代方案比较和置信度分离提升判断质量",
   "version": "0.1.1",
   "repo": "kylecui/petfish.ai",
-  "ref": "v1.4.0",
+  "ref": "v1.4.1",
   "path": "packs/optional/anti-sycophancy-calibration-pack",
   "skill_count": 1,
   "command_count": 0,

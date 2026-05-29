@@ -7,7 +7,7 @@
   "description": "测试用例与使用文档生成 — test case、覆盖率矩阵、README、API docs",
   "version": "1.0.1",
   "repo": "kylecui/petfish.ai",
-  "ref": "v1.4.0",
+  "ref": "v1.4.1",
   "path": "packs/optional/opencode-skill-pack-testcases-usage-docs",
   "skill_count": 2,
   "command_count": 0,
