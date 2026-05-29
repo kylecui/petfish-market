@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-05-29T04:01:44.721349+00:00",
+  "generated_at": "2026-05-29T04:40:35.087066+00:00",
   "skill_count": 1,
   "pack_count": 9,
   "skills": [
@@ -135,9 +135,9 @@
       ],
       "description": "\u5de5\u7a0b\u5199\u4f5c\u98ce\u683c\u6539\u5199 \u2014 \u53bbAI\u5473\u3001\u8bf4\u4eba\u8bdd\u3001AI\u8154\u68c0\u6d4b\u4e0e\u6539\u5199\u3001\u4e2d\u82f1\u6587\u7d27\u51d1\u6df7\u6392",
       "version": "4.0.1",
-      "repo": "kylecui/petfish.ai",
-      "ref": "v1.4.1",
-      "path": "packs/optional/petfish-style-skill",
+      "repo": "kylecui/petfish-pack-petfish-style",
+      "ref": "v4.0.1",
+      "path": ".opencode",
       "skill_count": 1,
       "command_count": 0,
       "agent_count": 0,
