@@ -1,9 +1,25 @@
 {
   "version": 2,
-  "generated_at": "2026-05-29T05:05:31.480492+00:00",
-  "skill_count": 1,
-  "pack_count": 9,
+  "generated_at": "2026-05-29T07:30:37.748956+00:00",
+  "skill_count": 2,
+  "pack_count": 10,
   "skills": [
+    {
+      "name": "fat-slim-writer",
+      "namespace": "community",
+      "description": "\u80d6\u7626\u5199\u4f5c\u6cd5\uff1a\u5148\u52a0\u6cd5\u5806\u780c\u7d20\u6750\u5f62\u6210\u80d6\u6587\u7ae0\uff0c\u518d\u51cf\u6cd5\u5220\u9664\u65e0\u5173\u65e0\u6548\u5185\u5bb9 (Fat-Slim writing: add material then subtract fluff)",
+      "repo": "kylecui/petfish-pack-fat-slim-writer",
+      "ref": "v0.1.0",
+      "path": ".opencode/skills/fat-slim-writer",
+      "license": "Apache-2.0",
+      "author": "petfish-community",
+      "tags": [
+        "writing",
+        "book",
+        "long-form",
+        "content"
+      ]
+    },
     {
       "name": "test-skill",
       "namespace": "community",
@@ -20,6 +36,29 @@
     }
   ],
   "packs": [
+    {
+      "namespace": "community",
+      "name": "petfish-pack-fat-slim-writer",
+      "alias": [
+        "fat-slim",
+        "book-writer",
+        "write-book"
+      ],
+      "description": "\u80d6\u7626\u5199\u4f5c\u6cd5 \u2014 \u5148\u52a0\u6cd5\u5806\u780c\u7d20\u6750\u5f62\u6210\u80d6\u6587\u7ae0\uff0c\u518d\u51cf\u6cd5\u72e0\u5fc3\u5220\u51cf\u65e0\u5173\u5185\u5bb9\uff0c\u9002\u5408\u957f\u7bc7\u5199\u4f5c\u573a\u666f (Fat-Slim writing method: add-then-subtract for long-form content)",
+      "version": "0.1.0",
+      "repo": "kylecui/petfish-pack-fat-slim-writer",
+      "ref": "v0.1.0",
+      "path": ".opencode",
+      "skill_count": 1,
+      "command_count": 0,
+      "agent_count": 0,
+      "license": "Apache-2.0",
+      "author": "petfish-community",
+      "platforms": [
+        "opencode"
+      ],
+      "gate_result": {}
+    },
     {
       "namespace": "official",
       "name": "anti-sycophancy-calibration-pack",
