@@ -1,0 +1,21 @@
+{
+  "namespace": "official",
+  "name": "doc-reader-skill",
+  "alias": [
+    "doc-reader"
+  ],
+  "description": "统一文档读取 — PDF/DOCX/XLSX/HTML/PPTX/EPUB转Markdown，基于markitdown",
+  "version": "1.0.0",
+  "repo": "kylecui/petfish.ai",
+  "ref": "v1.5.0",
+  "path": "packs/optional/doc-reader-skill",
+  "skill_count": 1,
+  "command_count": 0,
+  "agent_count": 0,
+  "license": "MIT",
+  "author": "petfish-team",
+  "platforms": [
+    "opencode"
+  ],
+  "gate_result": {}
+}
