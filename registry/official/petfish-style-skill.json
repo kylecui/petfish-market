@@ -5,10 +5,10 @@
     "petfish",
     "petfish-style-rewriter"
   ],
-  "description": "工程写作风格改写 — 去AI味、说人话、AI腔检测与改写、中英文紧凑混排",
-  "version": "4.0.1",
+  "description": "工程写作风格改写 — 去AI味、说人话、AI腔检测与改写、中英文紧凑混排、学术写作拟人化",
+  "version": "4.1.0",
   "repo": "kylecui/petfish-pack-petfish-style",
-  "ref": "v4.0.1",
+  "ref": "v4.1.0",
   "path": ".",
   "skill_count": 1,
   "command_count": 0,
@@ -18,5 +18,11 @@
   "platforms": [
     "opencode"
   ],
-  "gate_result": {}
+  "gate_result": {
+    "decision": "CONDITIONAL",
+    "lint_score": 80,
+    "security_risk": 0.1,
+    "critical_count": 0,
+    "evaluated_at": "2026-06-17"
+  }
 }

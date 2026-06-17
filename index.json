@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-06-05T06:37:05.012562+00:00",
+  "generated_at": "2026-06-17T00:11:20Z",
   "skill_count": 2,
   "pack_count": 12,
   "skills": [
@@ -193,10 +193,10 @@
         "petfish",
         "petfish-style-rewriter"
       ],
-      "description": "\u5de5\u7a0b\u5199\u4f5c\u98ce\u683c\u6539\u5199 \u2014 \u53bbAI\u5473\u3001\u8bf4\u4eba\u8bdd\u3001AI\u8154\u68c0\u6d4b\u4e0e\u6539\u5199\u3001\u4e2d\u82f1\u6587\u7d27\u51d1\u6df7\u6392",
-      "version": "4.0.1",
+      "description": "工程写作风格改写 — 去AI味、说人话、AI腔检测与改写、中英文紧凑混排、学术写作拟人化",
+      "version": "4.1.0",
       "repo": "kylecui/petfish-pack-petfish-style",
-      "ref": "v4.0.1",
+      "ref": "v4.1.0",
       "path": ".",
       "skill_count": 1,
       "command_count": 0,
@@ -206,7 +206,13 @@
       "platforms": [
         "opencode"
       ],
-      "gate_result": {}
+      "gate_result": {
+        "decision": "CONDITIONAL",
+        "lint_score": 80,
+        "security_risk": 0.1,
+        "critical_count": 0,
+        "evaluated_at": "2026-06-17"
+      }
     },
     {
       "namespace": "official",
