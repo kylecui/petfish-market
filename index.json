@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "generated_at": "2026-06-17T00:15:21.210315+00:00",
+  "generated_at": "2026-06-25T05:27:24.838852+00:00",
   "skill_count": 2,
-  "pack_count": 12,
+  "pack_count": 13,
   "skills": [
     {
       "name": "fat-slim-writer",
@@ -90,13 +90,35 @@
       "description": "\u7edf\u4e00\u6587\u6863\u8bfb\u53d6 \u2014 PDF/DOCX/XLSX/HTML/PPTX/EPUB\u8f6cMarkdown\uff0c\u57fa\u4e8emarkitdown",
       "version": "1.0.0",
       "repo": "kylecui/petfish.ai",
-      "ref": "v1.9.4",
+      "ref": "v1.5.0",
       "path": "packs/optional/doc-reader-skill",
       "skill_count": 1,
       "command_count": 0,
       "agent_count": 0,
       "license": "MIT",
       "author": "petfish-team",
+      "platforms": [
+        "opencode"
+      ],
+      "gate_result": {}
+    },
+    {
+      "namespace": "official",
+      "name": "drawio-radar-chart",
+      "alias": [
+        "radar-chart",
+        "drawio-radar"
+      ],
+      "description": "draw.io\u96f7\u8fbe\u56fe\u751f\u6210\u5668 \u2014 \u516d\u8f74/\u516b\u8f74\u80fd\u529b\u5bf9\u6bd4\u96f7\u8fbe\u56fe\uff0c\u7cbe\u786e\u9876\u70b9\u5750\u6807\u8ba1\u7b97\uff0c\u591a\u7cfb\u5217\u6570\u636e\u53e0\u52a0\uff0c\u540c\u5fc3\u5706\u7f51\u683c\uff0c\u81ea\u52a8PNG\u5bfc\u51fa\u3002\u89e3\u51b3\u4e86draw.io PNG\u5bfc\u51fa\u4e0d\u6e32\u67d3sourcePoint-only edges\u7684\u6838\u5fc3\u75db\u70b9\u3002",
+      "version": "1.0.0",
+      "repo": "kylecui/petfish-market",
+      "ref": "v1.0.0",
+      "path": "skills/drawio-radar-chart",
+      "skill_count": 1,
+      "command_count": 0,
+      "agent_count": 0,
+      "license": "MIT",
+      "author": "sisyphus",
       "platforms": [
         "opencode"
       ],
@@ -173,9 +195,9 @@
       ],
       "description": "\u6d4b\u8bd5\u7528\u4f8b\u4e0e\u4f7f\u7528\u6587\u6863\u751f\u6210 \u2014 test case\u3001\u8986\u76d6\u7387\u77e9\u9635\u3001README\u3001API docs",
       "version": "1.0.1",
-      "repo": "kylecui/petfish.ai",
-      "ref": "v1.9.4",
-      "path": "packs/optional/opencode-skill-pack-testcases-usage-docs",
+      "repo": "kylecui/petfish-pack-testdocs",
+      "ref": "v1.0.1",
+      "path": ".",
       "skill_count": 2,
       "command_count": 0,
       "agent_count": 0,
@@ -264,10 +286,10 @@
         "style-governor"
       ],
       "description": "\u7cfb\u5217\u6587\u6863\u98ce\u683c\u4e00\u81f4\u6027\u6cbb\u7406 \u2014 \u63d0\u53d6\u98ce\u683c\u753b\u50cf\u3001\u5ba1\u8ba1\u672f\u8bed\u6f02\u79fb\u4e0e\u6392\u7248\u6f02\u79fb\u3001\u4fdd\u5b88\u5f52\u4e00\u5316\u6539\u5199\uff0c\u4fdd\u7559\u4e8b\u5b9e\u4e0e\u4f5c\u8005\u610f\u56fe (Cross-document style consistency: extract style profile, audit terminology/layout drift, conservative rewrite preserving facts)",
-      "version": "0.2.0",
-      "repo": "kylecui/petfish.ai",
-      "ref": "v1.9.4",
-      "path": "packs/optional/series-style-governor-pack",
+      "version": "0.1.0",
+      "repo": "kylecui/petfish-pack-series-style-governor",
+      "ref": "v0.1.0",
+      "path": ".",
       "skill_count": 1,
       "command_count": 0,
       "agent_count": 0,
@@ -286,10 +308,10 @@
         "skill-trust-governance"
       ],
       "description": "Skill\u5b89\u5168\u6cbb\u7406\u5f15\u64ce \u2014 \u57fa\u4e8e\u884c\u4e3a\u5206\u6790\u7684skill\u53ef\u4fe1\u5ea6\u8bc4\u4f30\u3001\u98ce\u9669\u8bc4\u5206\u4e0e\u6cbb\u7406\u51b3\u7b56",
-      "version": "0.2.0",
-      "repo": "kylecui/petfish.ai",
-      "ref": "v1.9.4",
-      "path": "packs/optional/trustskills-governance-pack",
+      "version": "0.1.1",
+      "repo": "kylecui/petfish-pack-trustskills-governance",
+      "ref": "v0.1.1",
+      "path": ".",
       "skill_count": 1,
       "command_count": 0,
       "agent_count": 0,
