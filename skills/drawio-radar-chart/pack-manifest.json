@@ -12,11 +12,11 @@
   "commands": [],
   "agents": [],
   "contents": [
-    "SKILL.md",
-    "scripts/generate_radar.py",
-    "references/coordinate-formula.md",
-    "references/drawio-xml-anatomy.md",
-    "references/export-troubleshooting.md",
-    "evals/evals.json"
+    ".opencode/skills/drawio-radar-chart/SKILL.md",
+    ".opencode/skills/drawio-radar-chart/scripts/generate_radar.py",
+    ".opencode/skills/drawio-radar-chart/references/coordinate-formula.md",
+    ".opencode/skills/drawio-radar-chart/references/drawio-xml-anatomy.md",
+    ".opencode/skills/drawio-radar-chart/references/export-troubleshooting.md",
+    ".opencode/skills/drawio-radar-chart/evals/evals.json"
   ]
 }
