@@ -112,7 +112,7 @@
       "description": "draw.io\u96f7\u8fbe\u56fe\u751f\u6210\u5668 \u2014 \u516d\u8f74/\u516b\u8f74\u80fd\u529b\u5bf9\u6bd4\u96f7\u8fbe\u56fe\uff0c\u7cbe\u786e\u9876\u70b9\u5750\u6807\u8ba1\u7b97\uff0c\u591a\u7cfb\u5217\u6570\u636e\u53e0\u52a0\uff0c\u540c\u5fc3\u5706\u7f51\u683c\uff0c\u81ea\u52a8PNG\u5bfc\u51fa\u3002\u89e3\u51b3\u4e86draw.io PNG\u5bfc\u51fa\u4e0d\u6e32\u67d3sourcePoint-only edges\u7684\u6838\u5fc3\u75db\u70b9\u3002",
       "version": "1.0.0",
       "repo": "kylecui/petfish-market",
-      "ref": "main",
+      "ref": "v1.0.0",
       "path": "skills/drawio-radar-chart",
       "skill_count": 1,
       "command_count": 0,
