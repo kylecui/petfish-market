@@ -7,9 +7,9 @@
     "anti-sycophancy-calibration-pack"
   ],
   "description": "判断校准与顾问团决策 — 在评审、方案设计、代码审查、战略判断、研究设计、课程设计等判断型任务中降低AI迎合倾向，并通过多视角对抗式顾问团提升决策质量",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "repo": "kylecui/petfish-pack-anti-sycophancy",
-  "ref": "v0.2.0",
+  "ref": "v0.3.0",
   "path": ".",
   "skills": ["fish-calibrate", "council-thinking"],
   "skill_count": 2,
