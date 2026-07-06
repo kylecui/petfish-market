@@ -5,12 +5,17 @@
     "petfish",
     "petfish-style-rewriter"
   ],
-  "description": "工程写作风格改写 — 去AI味、说人话、AI腔检测与改写、中英文紧凑混排、学术写作拟人化",
-  "version": "4.1.0",
+  "description": "工程写作风格套件 — 去AI味改写、AI腔检测、风格画像提取、中英文紧凑混排、学术写作拟人化",
+  "version": "5.0.0",
   "repo": "kylecui/petfish-pack-petfish-style",
-  "ref": "v4.1.0",
+  "ref": "v5.0.0",
   "path": ".",
-  "skill_count": 1,
+  "skills": [
+    "petfish-style-rewriter",
+    "de-ai-detector",
+    "style-extractor"
+  ],
+  "skill_count": 3,
   "command_count": 0,
   "agent_count": 0,
   "license": "Apache-2.0",
