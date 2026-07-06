@@ -4,14 +4,16 @@
   "alias": [],
   "description": "Build publication-ready PDF from Markdown via pandoc+Typst pipeline. Handles Chinese-English mixed typography, figure/table per-chapter numbering, drawio diagram export, code block escaping, and thuthesis-compliant formatting.",
   "version": "1.0.0",
-  "repo": "kylecui/ai_harness_courseware",
+  "repo": "kylecui/petfish-pack-typst-pdf-builder",
   "ref": "v1.0.0",
-  "path": "packs/optional/typst-pdf-builder",
+  "path": ".",
   "skill_count": 1,
   "command_count": 0,
   "agent_count": 0,
   "license": "Apache-2.0",
   "author": "petfish-team",
-  "platforms": ["opencode"],
+  "platforms": [
+    "opencode"
+  ],
   "gate_result": {}
 }
