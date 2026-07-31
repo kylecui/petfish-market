@@ -24,11 +24,7 @@ PEtFiSh Market supports two submission types:
 ## Install a Community Skill
 
 ```bash
-# PowerShell
-.\install.ps1 -Pack "community/pdf-processor" -Target . -Detect
-
-# Bash
-./install.sh --pack community/pdf-processor --target . --detect
+uv run https://raw.githubusercontent.com/kylecui/petfish.ai/master/install.py --pack "community/pdf-processor" --detect
 ```
 
 Or via the agent:
@@ -39,11 +35,7 @@ Or via the agent:
 ## Install a Community Pack
 
 ```bash
-# PowerShell
-.\install.ps1 -Pack "community/my-data-tools" -Target . -Detect
-
-# Bash
-./install.sh --pack community/my-data-tools --target . --detect
+uv run https://raw.githubusercontent.com/kylecui/petfish.ai/master/install.py --pack "community/my-data-tools" --detect
 ```
 
 Or via the agent:

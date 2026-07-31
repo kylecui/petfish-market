@@ -8,6 +8,25 @@ Thank you for sharing your skill with the community!
 - The skill must pass `run_gate.py` locally (lint ≥ 80, security risk ≤ 0.5, no CRITICAL)
 - Apache-2.0 or compatible license
 
+## Quick Start with Market CLI
+
+Use the `market.py` CLI for a smooth submission experience:
+
+```bash
+# 1. Validate your skill locally before submitting
+uv run market.py validate /path/to/your-skill/
+
+# 2. Scaffold the metadata JSON
+uv run market.py init your-skill-name
+
+# 3. Edit the generated skills/community--your-skill-name.json (fill in TODO fields)
+
+# 4. Pre-submission readiness check
+uv run market.py check /path/to/your-skill/
+
+# 5. Submit PR — CI validates automatically on push
+```
+
 ## Submission Steps
 
 ### 1. Prepare Your Skill
