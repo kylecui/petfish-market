@@ -7,9 +7,9 @@
   ],
   "description": "工程写作风格套件 — 去AI味改写、AI腔检测、风格画像提取、中英文紧凑混排、学术写作拟人化",
   "version": "5.0.0",
-  "repo": "kylecui/petfish-pack-petfish-style",
-  "ref": "v5.0.0",
-  "path": ".",
+  "repo": "kylecui/petfish.ai",
+  "ref": "master",
+  "path": "packs/optional/petfish-style-skill",
   "skills": [
     "petfish-style-rewriter",
     "de-ai-detector",
