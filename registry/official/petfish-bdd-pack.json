@@ -1,0 +1,19 @@
+{
+  "namespace": "official",
+  "name": "petfish-bdd-pack",
+  "alias": [],
+  "description": "BDD-driven development discipline skill — enforce Gherkin-first, gate before code, strict TDD Red-Green-Refactor. For Python projects using pytest. Brownfield-friendly.",
+  "version": "0.1.0",
+  "repo": "kylecui/petfishFramework",
+  "ref": "petfish-bdd-pack-v0.1.0",
+  "path": "packs/optional/petfish-bdd-pack",
+  "skill_count": 1,
+  "command_count": 0,
+  "agent_count": 0,
+  "license": "MIT",
+  "author": "petfish-team",
+  "platforms": [
+    "opencode"
+  ],
+  "gate_result": {}
+}
