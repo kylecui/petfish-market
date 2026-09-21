@@ -1,0 +1,19 @@
+{
+  "namespace": "official",
+  "name": "completion-engineering-pack",
+  "alias": [],
+  "description": "完成工程 — 任务的完成标准契约化与交付验收：done-gate在开工时写契约（外部锚定+可验证谓词）、在宣称完成之前过门（真实证据+恒真谓词拦截+独立校验）；done-ledger把遗留强制分流（范围外进backlog不进todo防无限循环，等用户的项明示等待）。任务宣称完成时拿到的是可复核的证据链，绕过会被记录可见。适用于长任务、多文件、自主运行场景",
+  "version": "1.0.0",
+  "repo": "kylecui/petfish.ai",
+  "ref": "v3.5.0",
+  "path": "packs/optional/completion-engineering-pack",
+  "skill_count": 2,
+  "command_count": 0,
+  "agent_count": 0,
+  "license": "Apache-2.0",
+  "author": "petfish-team",
+  "platforms": [
+    "opencode"
+  ],
+  "gate_result": {}
+}
